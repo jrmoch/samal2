@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samal Land Surveying</title>
+    <link rel="stylesheet" href="../css/AdmAppoint.css">
+    <link rel="icon" href="../assets/logo.png" type="image/png">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="../assets/logo.png" alt="Logo" class="sidebar-logo">
+      <h2>Admin Panel</h2>
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+      <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+      <li><a href="#"><i class="fas fa-users"></i> Clients </a></li>
+      <li><a href="AdmAppoint.html"><i class="fas fa-calendar-check"></i> Appointments</a></li>
+      <li><a href="AdmSched.html"><i class="fas fa-user-md"></i> Engineer Schedule</a></li>
+      <li><a href="#"><i class="fas fa-calendar-alt"></i> Booking Calendar</a></li>
+    </ul>
+  </aside>
+<body>
+    <section class="appointment-admin">
+  <div class="appointment-header">
+    <h2>Client Appointments</h2>
+    <input type="text" id="searchInput" placeholder="Search by Appointment ID">
+  </div>
+
+  <table class="appointment-table">
+    <thead>
+      <tr>
+        <th>Appointment ID</th>
+        <th>Client Name</th>
+
+        <th>Engineer Name</th>
+        <th>Appointment Date</th>
+        <th>Appointment Time</th>
+        <th>Survey Type</th>
+        <th>Approval Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="appointmentBody">
+      <tr>
+        <td>SLS-2025-P01</td>
+        <td>Tine</td>
+        <td>Engr. Maria Santos</td>
+        <td>2025-10-30</td>
+        <td>10:00 AM</td>
+        <td>Topographic</td>
+        <td><span class="status approved">Approved</span></td>
+        <td>
+          <button class="approve-btn">Approve</button>
+          <button class="revisit-btn">Revisit</button>
+        </td>
+      </tr>
+      <tr>
+        <td>SLS-2025-P02</td>
+        <td>mina</td>
+        <td>Engr. John Reyes</td>
+        <td>2025-11-02</td>
+        <td>2:00 PM</td>
+        <td>Site Dev</td>
+        <td><span class="status pending">Pending</span></td>
+        <td>
+          <button class="approve-btn">Approve</button>
+          <button class="revisit-btn">Revisit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<script>
+  // Search filter
+  document.getElementById("searchInput").addEventListener("input", function () {
+    const filter = this.value.toUpperCase();
+    const rows = document.querySelectorAll("#appointmentBody tr");
+
+    rows.forEach(row => {
+      const idCell = row.cells[0];
+      if (idCell.textContent.toUpperCase().includes(filter)) {
+        row.style.display = "";
+      } else {
+        row.style.display = "none";
+      }
+    });
+  });
+
+  // Approve/Revisit actions
+  document.querySelectorAll(".approve-btn").forEach(btn => {
+    btn.addEventListener("click", function () {
+      const statusCell = this.closest("tr").querySelector(".status");
+      statusCell.textContent = "Approved";
+      statusCell.className = "status approved";
+    });
+  });
+
+  document.querySelectorAll(".revisit-btn").forEach(btn => {
+    btn.addEventListener("click", function () {
+      const statusCell = this.closest("tr").querySelector(".status");
+      statusCell.textContent = "Revisit";
+      statusCell.className = "status pending";
+    });
+  });
+</script>
+
+
+</body>

@@ -1,0 +1,181 @@
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #284602;
+  color: #fec700;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar-logo {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+.sidebar-header h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin: 15px 0;
+}
+
+.sidebar-menu a {
+  color: #fec700;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-menu a:hover {
+  color: white;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+}
+
+/* calendar */
+
+.calendar-admin {
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+  font-size: 1.5rem;
+  color: #284602;
+}
+
+.add-event-btn {
+  background-color: #284602;
+  color: #fec700;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-height: 100px;
+  position: relative;
+}
+
+.calendar-day .date-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.calendar-day .event {
+  background-color: #284602;
+  color: #fec700;
+  padding: 4px 6px;
+  margin-top: 4px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.modal-content h3 {
+  margin-bottom: 20px;
+  color: #284602;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-actions button[type="submit"] {
+  background-color: #284602;
+  color: #fec700;
+}
+
+.modal-actions button#closeEventModal {
+  background-color: #ccc;
+}

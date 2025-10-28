@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/appmnt.css">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <div class="nav-left">
+          <div class="logo">
+            <img src="../assets/logo.png" alt="Philsurv Logo" style="height: 8vh;">
+          </div>
+        </div>
+
+        <div class="nav-center">
+          <ul class="nav-links" id="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="#"><i class="fas fa-cogs"></i> Services</a></li>
+            <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="appmnt.html"><i class="fas fa-calendar"></i> Appointment</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <button class="signup-btn"><i class="fas fa-user-plus"></i> Sign Up</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  
+<div class="form-container">
+  <div class="form-wrapper">
+    <form action="https://formbold.com/s/FORM_ID" method="POST">
+      <!-- Full Name -->
+      <div class="form-group">
+        <label for="name" class="label">Full Name</label>
+        <input type="text" name="name" id="name" placeholder="Full Name" class="input"/>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="form-group">
+        <label for="phone" class="label">Phone Number</label>
+        <input type="text" name="phone" id="phone" placeholder="Enter your phone number" class="input"/>
+      </div>
+
+      <!-- Email Address -->
+      <div class="form-group">
+        <label for="email" class="label">Email Address</label>
+        <input type="email" name="email" id="email" placeholder="Enter your email" class="input"/>
+      </div>
+
+      <!-- Date and Time -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="date" class="label">Date</label>
+            <input type="date" name="date" id="date" class="input date"/>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="time" class="label">Time</label>
+            <input type="time" name="time" id="time" class="input time"/>
+          </div>
+        </div>
+      </div>
+
+        <div class="form-group">
+        <label for="service" class="label">Type of Service</label>
+        <select id="service" name="service" class="input" required>
+            <option value="">-- Select Service --</option>
+            <option value="topographic">Topographic Survey</option>
+            <option value="lot-verification">Lot Verification Survey</option>
+            <option value="site-development">Site Development Plan</option>
+            <option value="land-title">Land Title Applications</option>
+        </select>
+        </div>
+
+      <!-- Submit Button -->
+      <div>
+        <button class="btn">Book Appointment</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+  <script>
+    document.getElementById("appointmentForm").addEventListener("submit", async function(e){
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      const response = await fetch("backend.php", {
+        method: "POST",
+        body: formData
+      });
+      
+      const result = await response.text();
+      document.getElementById("response").innerText = result;
+    });
+  </script>
+</body>
+ <footer class="footer">
+    <small>© 2025 Samal Land Surveying. All rights reserved.</small>
+</footer>
+</html>

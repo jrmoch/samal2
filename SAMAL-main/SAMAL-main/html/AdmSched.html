@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samal Land Surveying</title>
+    <link rel="stylesheet" href="../css/AdmSched.css">
+    <link rel="icon" href="../assets/logo.png" type="image/png">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="../assets/logo.png" alt="Logo" class="sidebar-logo">
+      <h2>Admin Panel</h2>
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+      <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+      <li><a href="#"><i class="fas fa-users"></i> Clients </a></li>
+      <li><a href="AdmAppoint.html"><i class="fas fa-calendar-check"></i> Appointments</a></li>
+      <li><a href="AdmSched.html"><i class="fas fa-user-md"></i> Engineer Schedule</a></li>
+      <li><a href="#"><i class="fas fa-calendar-alt"></i> Booking Calendar</a></li>
+    </ul>
+  </aside>
+
+  <body>
+    <section class="schedule-section">
+  <div class="schedule-header">
+    <h2>Engineer Schedule</h2>
+    <button class="add-schedule-btn">+ Add Schedule</button>
+  </div>
+
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th>Engineer Name</th>
+        <th>Department</th>
+        <th>Available Days</th>
+        <th>Available Time</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Engr. Maria Santos</td>
+        <td>Topographic</td>
+        <td>Monday, Wednesday, Friday</td>
+        <td>9:00 AM – 4:00 PM</td>
+        <td><span class="status active">Active</span></td>
+        <td><button class="action-btn">✏️</button></td>
+      </tr>
+      <tr>
+        <td>Engr. John Reyes</td>
+        <td>Site Dev</td>
+        <td>Tuesday, Thursday</td>
+        <td>10:00 AM – 3:00 PM</td>
+        <td><span class="status active">Active</span></td>
+        <td><button class="action-btn">✏️</button></td>
+      </tr>
+      <tr>
+        <td>Engr. Liza Cruz</td>
+        <td>Land Title</td>
+        <td>Monday, Wednesday</td>
+        <td>1:00 PM – 5:00 PM</td>
+        <td><span class="status active">Active</span></td>
+        <td><button class="action-btn">✏️</button></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<!-- Add Schedule Modal -->
+<div class="modal-overlay" id="scheduleModal">
+  <div class="modal-content">
+    <h3>Add Engineer Schedule</h3>
+    <form id="addScheduleForm">
+      <label>Engineer Name</label>
+      <input type="text" name="engineerName" required>
+
+      <label>Department</label>
+      <input type="text" name="department" required>
+
+      <label>Available Days</label>
+      <input type="text" name="days" placeholder="e.g. Monday, Wednesday" required>
+
+      <label>Available Time</label>
+      <input type="text" name="time" placeholder="e.g. 9:00 AM – 4:00 PM" required>
+
+      <label>Status</label>
+      <select name="status">
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+      </select>
+
+      <div class="modal-actions">
+        <button type="submit">Add</button>
+        <button type="button" id="closeModal">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Script to handle modal and form -->
+<script>
+  const modal = document.getElementById('scheduleModal');
+  const openBtn = document.querySelector('.add-schedule-btn');
+  const closeBtn = document.getElementById('closeModal');
+  const form = document.getElementById('addScheduleForm');
+  const tableBody = document.querySelector('.schedule-table tbody');
+
+  openBtn.addEventListener('click', () => {
+    modal.style.display = 'flex';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = form.engineerName.value;
+    const dept = form.department.value;
+    const days = form.days.value;
+    const time = form.time.value;
+    const status = form.status.value;
+
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+      <td>${name}</td>
+      <td>${dept}</td>
+      <td>${days}</td>
+      <td>${time}</td>
+      <td><span class="status active">${status}</span></td>
+      <td><button class="action-btn">✏️</button></td>
+    `;
+    tableBody.appendChild(newRow);
+    modal.style.display = 'none';
+    form.reset();
+  });
+</script>
+
+  </body>
+  
